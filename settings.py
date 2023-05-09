@@ -1,16 +1,86 @@
 from os import environ
 
-
 SESSION_CONFIGS = [
-    dict(
-        name='TheGame',
-        display_name="Game",
-        app_sequence=['groups_roles'],
-        num_demo_participants= (2, 4, 6),
+    # dict(
+    #     name='LIVE',
+    #     app_sequence=['live_pages'],
+    #     num_demo_participants=2
+    # ),
+    # dict(
+    #     name='STYLE',
+    #     app_sequence=['styles'],
+    #     num_demo_participants=2
+    # ),
+    dict(name='hello_world',
+         app_sequence=['hello_world'],
+         num_demo_participants=2     
     ),
+     dict(
+         name='TG',
+         app_sequence=['TG'],
+         num_demo_participants=2,
+         treatment = "method"# play= sequential; method= strategy method
+     ),
+    # dict(
+    #     name='PGG',
+    #     app_sequence=['PGG'],
+    #     num_demo_participants=3,
+    # ),
+    # dict(
+    #     name='groups_roles',
+    #     app_sequence=['groups_roles'],
+    #     num_demo_participants=4,
+    # ),
     dict(
-        name='groups_roles', app_sequence=['groups_roles'], num_demo_participants=1
+        name='MPL',
+        app_sequence=['MPL'],
+        num_demo_participants=4,
     ),
+    #     dict(
+    #     name='PGG',
+    #     app_sequence=['PGG'],
+    #     num_demo_participants=3,
+    # ),
+    # dict(
+    #     name='sliders',
+    #     app_sequence=['sliders_new'],
+    #     num_demo_participants=3,
+    # ),
+    #     dict(
+    #     name='MPL',
+    #     app_sequence=['MPL'],
+    #     num_demo_participants=3,
+    # ),
+    # dict(
+    #     name='Inputs',
+    #     app_sequence=['inputs'],
+    #     num_demo_participants=1,
+    # ),
+    # dict(
+    #     name='HelloWorld',
+    #     app_sequence=['hello_world'],
+    #     num_demo_participants=3,
+    # ),
+    #     dict(
+    #     name='my_first_survey',
+    #     app_sequence=['my_first_survey'],
+    #     num_demo_participants=3,
+    # ),  
+    #     dict(
+    #     name='inputs',
+    #     app_sequence=['inputs'],
+    #     num_demo_participants=3,
+    # ),  
+    #     dict(
+    #     name='hello_world',
+    #     app_sequence=['hello_world'],
+    #     num_demo_participants=3,
+    # ),
+    # dict(
+    #     name='beauty_contest',
+    #     app_sequence=['beauty_contest'],
+    #     num_demo_participants=3,
+    # ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -22,7 +92,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
 )
 
-PARTICIPANT_FIELDS = []
+PARTICIPANT_FIELDS = ['expiry','counted','target','defaults']
 SESSION_FIELDS = []
 
 # ISO-639 code
@@ -30,27 +100,14 @@ SESSION_FIELDS = []
 LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
+REAL_WORLD_CURRENCY_CODE = 'GBP'
 USE_POINTS = True
-
-ROOMS = [
-    dict(
-        name='econ101',
-        display_name='Econ 101 class',
-        participant_label_file='_rooms/econ101.txt',
-    ),
-    dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
-]
+POINTS_CUSTOM_NAME = 'Tokens'
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
-DEMO_PAGE_INTRO_HTML = """
-Here are some oTree games.
-"""
+DEMO_PAGE_INTRO_HTML = """ """
 
-
-SECRET_KEY = '4098597674240'
-
-INSTALLED_APPS = ['otree']
+SECRET_KEY = '3117236745767'

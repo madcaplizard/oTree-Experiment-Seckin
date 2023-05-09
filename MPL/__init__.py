@@ -1,20 +1,16 @@
-import random #import a model everytime
-from typing import List
-
+import random
 from otree.api import *
-
-
 
 author = 'MP'
 doc = """
 MPL risk elicitation à la Holt&Laury
 """
 
-class Constants(BaseConstants): # Right and current way class C(BaseConstants) and below names should be in all capital letters
-    name_in_url = 'MPL'
-    players_per_group = None
-    num_rounds = 1
-    # these are the lottery payoffs, f1 and f2 refer to lottery A and f3 and f4 to lottery B
+class C(BaseConstants):
+    NAME_IN_URL = 'MPL'
+    PLAYERS_PER_GROUP = None
+    NUM_ROUNDS = 1
+    # These are the lottery payoffs, f1 and f2 refer to lottery A and f3 and f4 to lottery B
     A_h = 2.00
     A_l = 1.60
     B_h = 3.85
@@ -101,21 +97,22 @@ def set_payoff_HL(player: Player):
         # if the random number is smaller equal than the random row
         if player.choice == "A":  
             # if the choice was A
-            player.payoff = float(Constants.A_h)
+            player.payoff = float(C.A_h)
             # because HL_row is the same as p in the MPL
         else:
             # if the choice was B
-            player.payoff = float(Constants.B_h)
+            player.payoff = float(C.B_h)
     else:
         # if the random number is larger than the random row
         if player.choice == "A":  # A
             # if the choice was A
-            player.payoff=float(Constants.A_l)
+            player.payoff=float(C.A_l)
             # because HL_row is the same as p in the MPL
         else:
-            player.payoff=float(Constants.B_l)
+            player.payoff=float(C.B_l)
     # write the payoff to player.payoff
     print(player.payoff)
+
 # PAGES
 class Instructions(Page):
     form_model = 'player'
@@ -142,7 +139,7 @@ class PageHL(Page):
     @staticmethod
     def vars_for_template(player: Player):
         # retrieve values from constants and store them in a dictionary
-        return {'A_h': Constants.A_h, 'A_l': Constants.A_l, 'B_h': Constants.B_h, 'B_l': Constants.B_l}
+        return {'A_h': C.A_h, 'A_l': C.A_l, 'B_h': C.B_h, 'B_l': C.B_l}
 
     # before moving to next page, compute payoffs (avoids that with refreshing payoffs are recomputed again)
     @staticmethod
@@ -173,17 +170,16 @@ class PageHL_2(Page):
             Lotteries.append(
                 [
                     i,
-                    str(i) + "/10 of €" + str(Constants.A_h),
-                    str(10 - i) + "/10 of €" + str(Constants.A_l),
+                    str(i) + "/10 of €" + str(C.A_h),
+                    str(10 - i) + "/10 of €" + str(C.A_l),
                     "",
-                    str(i) + "/10 of €" + str(Constants.B_h),
-                    str(10 - i) + "/10 of €" + str(Constants.B_l),
+                    str(i) + "/10 of €" + str(C.B_h),
+                    str(10 - i) + "/10 of €" + str(C.B_l),
                 ]
             )
         return {'Lott': Lotteries}
 
-    # before moving to next page, compute payoffs (avoids that with refreshing payoffs are recomputed again). 
-    # (APPLYING IT BEFORE THE FINAL PAGE IS IMPORTANT, PARTICIPANTS ARE REFRESHING THE PAGE EXAMPLE)
+    # before moving to next page, compute payoffs (avoids that with refreshing payoffs are recomputed again)
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         # built-in method
@@ -206,6 +202,5 @@ class OutcomeHL(Page):
         }
 
 
-
 # the coreography of pages
-page_sequence = [Instructions, PageHL, OutcomeHL]
+page_sequence = [Instructions, PageHL_2, OutcomeHL]

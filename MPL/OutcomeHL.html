@@ -3,7 +3,7 @@
 <h1> Results </h1>
 
 <div class="container border" style="font-size:14pt">
-		<p> <b>Row #{{row}}</b> was randomly selected for payment.</p>
+		<p> <b>Row #{{player.row}}</b> was randomly selected for payment.</p>
 
 		<table class="table">
 			<thead>
@@ -17,11 +17,11 @@
 			</thead>
 		<tr>
 			<th scope="row">{{row}}</th>
-			<td>{{p_A_1}}/10 of €{{Constants.A_h}} </td>
-			<td> {{p_A_2}}/10 of €{{Constants.A_l}}</td>
+			<td>{{p_A_1}}/10 of €{{C.A_h}} </td>
+			<td> {{p_A_2}}/10 of €{{C.A_l}}</td>
 		<td></td>
-			<td>{{p_B_1}}/10 of €{{Constants.B_h}}</td>
-			<td>{{p_B_2}}/10 of €{{Constants.B_l}} </td>
+			<td>{{p_B_1}}/10 of €{{C.B_h}}</td>
+			<td>{{p_B_2}}/10 of €{{C.B_l}} </td>
 		</tr>
 
 		</table>
